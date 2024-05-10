@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Button, buttonVariants } from "./ui/button";
-import { Input } from "./ui/input";
+import SearchInput from "./SearchInput";
 
 const Homepage = () => {
   return (
@@ -17,14 +16,7 @@ const Homepage = () => {
                 Get real-time and historical data on countries around the globe.
               </p>
             </div>
-            <div className="flex items-center gap-4">
-              <Input
-                className=""
-                placeholder="Search country name..."
-                type="search"
-              />
-              <Button className={buttonVariants()}>Search</Button>
-            </div>
+            <SearchInput />
           </div>
           <Image
             src="/globe.png"
