@@ -39,7 +39,10 @@ const CountryList = async ({ name }: { name: string }) => {
       {filtered.length > 0 ? (
         filtered?.map((country: CountryProps) => {
           return (
-            <Card className="w-full md:w-1/6 shadow-md flex flex-col justify-between">
+            <Card
+              className="w-full md:w-1/6 shadow-md flex flex-col justify-between"
+              key={country?.name?.common}
+            >
               <Link href={`/detail/${country?.name?.common}`}>
                 <div>
                   <CardHeader>
