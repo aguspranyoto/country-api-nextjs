@@ -35,34 +35,35 @@ const CountryList = async ({ name }: { name: string }) => {
   const filtered = await filteredCountry({ name });
 
   return (
-    <div className="flex flex-wrap gap-6 md:gap-12">
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-12">
       {filtered.length > 0 ? (
         filtered?.map((country: CountryProps) => {
           return (
             <Card
-              className="w-full md:w-1/6 shadow-md flex flex-col justify-between"
+              className="w-full shadow-md flex flex-col justify-between"
               key={country?.name?.common}
             >
               <Link href={`/detail/${country?.name?.common}`}>
                 <div>
-                  <CardHeader>
-                    <CardTitle className="break-words text-lg">
+                  <CardHeader className="p-4">
+                    <CardTitle className="break-words text-md sm:text-lg">
                       {country?.name?.common}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="p-4">
                     <Image
                       src={country?.flags?.png}
                       width="300"
                       height="300"
-                      alt="Globe"
+                      alt="country flag"
+                      className="shadow-md"
                     />
                   </CardContent>
                 </div>
                 <CardFooter>
                   <div className="flex flex-col">
-                    <div className="text-lg">Capital:</div>
-                    <div className="text-lg font-semibold">
+                    <div className="text-md sm:text-lg">Capital:</div>
+                    <div className="text-md sm:text-lg font-semibold">
                       {country?.capital?.[0]}
                     </div>
                   </div>

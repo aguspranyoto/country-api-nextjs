@@ -27,7 +27,7 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
           <Link
             href="/"
             className={buttonVariants({
-              className: "md:mx-32 text-xl font-normal",
+              className: "md:mx-32 text-md md:text-xl font-normal",
             })}
           >
             Back
