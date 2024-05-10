@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CountryProps {
   name: {
@@ -35,29 +36,31 @@ const CountryList = async () => {
       {data?.map((country: CountryProps) => {
         return (
           <Card className="w-full md:w-1/6 shadow-md flex flex-col justify-between">
-            <div>
-              <CardHeader>
-                <CardTitle className="break-words text-lg">
-                  {country?.name?.common}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Image
-                  src={country?.flags?.png}
-                  width="300"
-                  height="300"
-                  alt="Globe"
-                />
-              </CardContent>
-            </div>
-            <CardFooter>
-              <div className="flex flex-col">
-                <div className="text-lg">Capital:</div>
-                <div className="text-lg font-semibold">
-                  {country?.capital?.[0]}
-                </div>
+            <Link href={`/detail/${country?.name?.common}`}>
+              <div>
+                <CardHeader>
+                  <CardTitle className="break-words text-lg">
+                    {country?.name?.common}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Image
+                    src={country?.flags?.png}
+                    width="300"
+                    height="300"
+                    alt="Globe"
+                  />
+                </CardContent>
               </div>
-            </CardFooter>
+              <CardFooter>
+                <div className="flex flex-col">
+                  <div className="text-lg">Capital:</div>
+                  <div className="text-lg font-semibold">
+                    {country?.capital?.[0]}
+                  </div>
+                </div>
+              </CardFooter>
+            </Link>
           </Card>
         );
       })}
