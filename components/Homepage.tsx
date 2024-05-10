@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 
 const Homepage = () => {
   return (
-    <section className="w-full pt-24 pb-12 flex justify-center items-center ">
+    <section className="w-full pt-12 pb-12 flex justify-center items-center ">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col gap-12 md:gap-0 justify-between md:flex-row ">
           <div className="order-2 md:order-1 flex w-full md:max-w-2xl flex-col justify-center space-y-4">
