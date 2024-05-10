@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import { Button, buttonVariants } from "./ui/button";
+import Link from "next/link";
 
 interface CountryNameProps {
   name: string;
@@ -20,10 +22,13 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
 
   return (
     <>
-      <section className="w-full min-h-screen flex justify-center items-center pt-12 md:pt-24 lg:pt-32">
+      <section className="w-full min-h-screen flex items-center pt-12 md:pt-24 lg:pt-32">
         <div className="container space-y-10 xl:space-y-16">
+          <Link href="/" className={buttonVariants({ className: "mx-4" })}>
+            Back
+          </Link>
           <div className="grid gap-8 px-4 md:grid-cols-2 md:gap-16">
-            <div className="flex flex-col items-center space-y-4">
+            <div className="flex flex-col space-y-4">
               <Image
                 alt="Country Flag"
                 className="rounded-lg shadow-lg"
@@ -48,7 +53,7 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center space-y-4">
+            <div className="flex flex-col space-y-4">
               <div className="grid gap-4">
                 <div className="grid gap-1">
                   <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
@@ -100,9 +105,14 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                   <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
                     Calling Code
                   </p>
-                  <p className="text-xl">
-                    {data?.[0]?.idd?.root}
-                    {data?.[0]?.idd?.suffixes}
+                  <p className="text-xl truncate">
+                    {/* {data?.[0]?.idd?.root}
+                    {data?.[0]?.idd?.suffixes} */}
+                    {name == "United%20States"
+                      ? `${data?.[0]?.idd?.root}`
+                      : `${data?.[0]?.idd?.root}${data?.[0]?.idd?.suffixes.join(
+                          ", "
+                        )}`}
                   </p>
                 </div>
               </div>
