@@ -22,12 +22,12 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
 
   return (
     <>
-      <section className="w-full min-h-screen flex items-center pt-12 md:pt-24 lg:pt-32">
+      <section className="min-w-screen min-h-screen flex items-center pt-12 md:pt-24 lg:pt-32">
         <div className="container space-y-10 xl:space-y-16">
-          <Link href="/" className={buttonVariants({ className: "mx-4" })}>
+          <Link href="/" className={buttonVariants({ className: "mx-24" })}>
             Back
           </Link>
-          <div className="grid gap-8 px-4 md:grid-cols-2 md:gap-16">
+          <div className="grid gap-8 md:px-24 md:grid-cols-2 md:gap-16">
             <div className="flex flex-col space-y-4">
               <Image
                 alt="Country Flag"
@@ -53,7 +53,7 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col md:items-end space-y-4">
               <div className="grid gap-4">
                 <div className="grid gap-1">
                   <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
