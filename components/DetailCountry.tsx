@@ -24,10 +24,15 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
     <>
       <section className="min-w-screen min-h-screen flex items-center pt-12 md:pt-24 lg:pt-32">
         <div className="container space-y-10 xl:space-y-16">
-          <Link href="/" className={buttonVariants({ className: "mx-24" })}>
+          <Link
+            href="/"
+            className={buttonVariants({
+              className: "mx-32 text-xl font-normal",
+            })}
+          >
             Back
           </Link>
-          <div className="grid gap-8 md:px-24 md:grid-cols-2 md:gap-16">
+          <div className="grid gap-8 md:px-32 md:grid-cols-2 md:gap-16">
             <div className="flex flex-col space-y-4">
               <Image
                 alt="Country Flag"
@@ -45,9 +50,9 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                   {data?.[0]?.name?.common}
                 </h1>
                 <div className="flex items-center space-x-4">
-                  <p className="text-xl">Capital: {data?.[0]?.capital}</p>
+                  <p className="text-2xl">Capital: {data?.[0]?.capital}</p>
                   <span className="h-1 w-1 rounded-full bg-gray-400 dark:bg-gray-600" />
-                  <p className="text-xl">
+                  <p className="text-2xl">
                     Population: {data?.[0]?.population.toLocaleString()}
                   </p>
                 </div>
@@ -56,7 +61,7 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
             <div className="flex flex-col md:items-end space-y-4">
               <div className="grid gap-4">
                 <div className="grid gap-1">
-                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-2xl font-medium text-gray-500 dark:text-gray-400">
                     Currency
                   </p>
                   <div>
@@ -70,7 +75,7 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                           //     currency
                           //   ); // Logging the currency object
                           return (
-                            <li key={currencyCode} className="text-xl">
+                            <li key={currencyCode} className="text-2xl">
                               {currency.name} ({currency.symbol})
                             </li>
                           );
@@ -80,14 +85,14 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                   </div>
                 </div>
                 <div className="grid gap-1">
-                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-2xl font-medium text-gray-500 dark:text-gray-400">
                     Languages
                   </p>
                   <div>
                     <ul>
                       {Object.entries(data?.[0]?.languages).map(
                         ([languageCode, languageName]: any) => (
-                          <li key={languageCode} className="text-xl">
+                          <li key={languageCode} className="text-2xl">
                             {languageName}
                           </li>
                         )
@@ -96,16 +101,16 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                   </div>
                 </div>
                 <div className="grid gap-1">
-                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-2xl font-medium text-gray-500 dark:text-gray-400">
                     Area
                   </p>
-                  <p className="text-xl">{data?.[0].area} km²</p>
+                  <p className="text-2xl">{data?.[0].area} km²</p>
                 </div>
                 <div className="grid gap-1">
-                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-2xl font-medium text-gray-500 dark:text-gray-400">
                     Calling Code
                   </p>
-                  <p className="text-xl truncate">
+                  <p className="text-2xl truncate">
                     {/* {data?.[0]?.idd?.root}
                     {data?.[0]?.idd?.suffixes} */}
                     {name == "United%20States"
