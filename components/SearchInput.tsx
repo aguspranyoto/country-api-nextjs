@@ -15,7 +15,7 @@ const SearchInput = () => {
   return (
     <div className="flex items-center gap-4">
       <Input
-        className=""
+        className="border border-slate-600 text-md md:text-md md:p-6"
         placeholder="Search country name..."
         type="search"
         onChange={(e) => setSearch(e.target.value)}

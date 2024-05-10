@@ -35,7 +35,7 @@ const CountryList = async ({ name }: { name: string }) => {
   const filtered = await filteredCountry({ name });
 
   return (
-    <div className="flex flex-wrap gap-12">
+    <div className="flex flex-wrap gap-6 md:gap-12">
       {filtered.length > 0 ? (
         filtered?.map((country: CountryProps) => {
           return (
