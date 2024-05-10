@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 interface CountryNameProps {
@@ -19,15 +20,15 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
 
   return (
     <>
-      <section className="w-full pt-12 md:pt-24 lg:pt-32">
+      <section className="w-full min-h-screen flex justify-center items-center pt-12 md:pt-24 lg:pt-32">
         <div className="container space-y-10 xl:space-y-16">
           <div className="grid gap-8 px-4 md:grid-cols-2 md:gap-16">
-            <div className="flex flex-col items-start space-y-4">
-              <img
+            <div className="flex flex-col items-center space-y-4">
+              <Image
                 alt="Country Flag"
-                className="rounded-lg"
+                className="rounded-lg shadow-lg"
                 height="200"
-                src="/placeholder.svg"
+                src={data?.[0]?.flags?.png}
                 style={{
                   aspectRatio: "300/200",
                   objectFit: "cover",
@@ -39,69 +40,72 @@ const DetailCountry = async ({ name }: CountryNameProps) => {
                   {data?.[0]?.name?.common}
                 </h1>
                 <div className="flex items-center space-x-4">
-                  <p>Capital: {data?.[0]?.capital}</p>
+                  <p className="text-xl">Capital: {data?.[0]?.capital}</p>
                   <span className="h-1 w-1 rounded-full bg-gray-400 dark:bg-gray-600" />
-                  <p>Population: {data?.[0]?.population.toLocaleString()}</p>
+                  <p className="text-xl">
+                    Population: {data?.[0]?.population.toLocaleString()}
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-start space-y-4">
+            <div className="flex flex-col items-center space-y-4">
               <div className="grid gap-4">
                 <div className="grid gap-1">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
                     Currency
                   </p>
-                  <p>United States Dollar (USD)</p>
+                  <div>
+                    <ul>
+                      {Object.entries(data?.[0]?.currencies).map(
+                        ([currencyCode, currency]: any) => {
+                          //   console.log(
+                          //     "currencyCode:",
+                          //     currencyCode,
+                          //     "currency:",
+                          //     currency
+                          //   ); // Logging the currency object
+                          return (
+                            <li key={currencyCode} className="text-xl">
+                              {currency.name} ({currency.symbol})
+                            </li>
+                          );
+                        }
+                      )}
+                    </ul>
+                  </div>
                 </div>
                 <div className="grid gap-1">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
                     Languages
                   </p>
-                  <p>English</p>
+                  <div>
+                    <ul>
+                      {Object.entries(data?.[0]?.languages).map(
+                        ([languageCode, languageName]: any) => (
+                          <li key={languageCode} className="text-xl">
+                            {languageName}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
                 </div>
                 <div className="grid gap-1">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
                     Area
                   </p>
-                  <p>9,833,517 km²</p>
+                  <p className="text-xl">{data?.[0].area} km²</p>
                 </div>
                 <div className="grid gap-1">
-                  <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
                     Calling Code
                   </p>
-                  <p>+1</p>
+                  <p className="text-xl">
+                    {data?.[0]?.idd?.root}
+                    {data?.[0]?.idd?.suffixes}
+                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <div className="grid gap-1">
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Currency
-              </p>
-              <p>United States Dollar (USD)</p>
-            </div>
-            <div className="grid gap-1">
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Languages
-              </p>
-              <p>English</p>
-            </div>
-            <div className="grid gap-1">
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Area
-              </p>
-              <p>9,833,517 km²</p>
-            </div>
-            <div className="grid gap-1">
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Calling Code
-              </p>
-              <p>+1</p>
             </div>
           </div>
         </div>
